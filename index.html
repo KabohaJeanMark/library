@@ -10,6 +10,40 @@
   <title>Library</title>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Library</h1>  
+    </header>
+  </div>
+  
+  <main>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="book name" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" id="author" aria-describedby="book author" placeholder="Enter author">
+        </div>
+        <div class="form-group">
+          <label for="pages">Pages</label>
+          <input type="number" class="form-control" id="pages" aria-describedby="book pages" placeholder="Enter pages">
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="alreadyRead" name="read" class="custom-control-input">
+          <label class="custom-control-label" for="alreadyRead">Already read</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="notRead" name="read" class="custom-control-input">
+          <label class="custom-control-label" for="notRead">Not yet read</label>
+        </div>
+        <button class="btn btn-success" type="submit">CREATE BOOK</button>
+      </form>
+    </div>
+    
+  </main>
   <script src="js/main.js"></script>
 </body>
 </html>
