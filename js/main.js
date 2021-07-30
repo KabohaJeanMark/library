@@ -1,4 +1,11 @@
-const myLibrary = [];
+const myLibrary = [
+  {
+    name: 'Harry Porter',
+    author: 'J.K Rowling',
+    pages: '200',
+    read: 'yes'
+  }
+];
 
 const allBooks = document.getElementById('bookList');
 
@@ -25,22 +32,42 @@ function addBookToLibrary() {
   myLibrary.push(addedBook);
 }
 
+function deleteBook(book) {
+  const bookIndex = myLibrary.indexOf(book);
+  delete myLibrary[bookIndex];
+  console.log('The book has been deleted')
+}
+
 function createBookCard(book) {
   const div = document.createElement('div');
   const p = document.createElement('p');
-  const p2 = document.createElement('p');
+  const deleteBtn = document.createElement('button');
+  deleteBtn.classList.add('btn','btn-danger'); 
+  deleteBtn.textContent = 'DELETE';
   console.log(book);
   p.textContent = book.name;
-  p2.textContent = 'book 1';
   div.appendChild(p);
+  div.appendChild(deleteBtn);
+  deleteBtn.addEventListener('click', deleteBook(book));
   return div;
 }
 
 function displayAllBooks() {
-  for (const book of myLibrary) {
-    const bookCard = createBookCard(book);
-    allBooks.appendChild(bookCard);
+  if (!myLibrary.length) {
+    console.log('There are no books in library')
+    const div2 = document.createElement('div');
+    const p2 = document.createElement('p');
+    p2.textContent = 'There are currently no books';
+    div2.appendChild(p2);
+    return div2;
   }
+  else {
+    for (const book of myLibrary) {
+      const bookCard = createBookCard(book);
+      allBooks.appendChild(bookCard);
+    }
+  }
+  
 }
 
 const addForm = document.getElementById('createForm');
