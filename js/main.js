@@ -9,8 +9,19 @@ function Book(name, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
+function addBookToLibrary() {
+  const name = document.getElementById('name').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  let read;
+  if (document.getElementById('alreadyRead').checked) {
+    read = document.getElementById('alreadyRead').value;
+  }
+  else {
+    read = document.getElementById('notRead').value;
+  }
+  addedBook = new Book(name, author, pages, read);
+  myLibrary.push(addedbook);
 }
 
 function createBookCard(book) {
