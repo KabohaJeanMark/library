@@ -42,18 +42,18 @@ function createBookCard(book) {
   const div = document.createElement('div');
   div.classList.add('m-2','p-1')
   const p = document.createElement('p');
+  p.textContent = book.name;
   const deleteBtn = document.createElement('button');
-  const updateBtn = document.createElement('button');
   deleteBtn.classList.add('btn','btn-danger','m-1'); 
   deleteBtn.textContent = 'DELETE';
+  const updateBtn = document.createElement('button');
   updateBtn.classList.add('btn','btn-warning','m-1');
   updateBtn.textContent = 'UPDATE';
-  console.log(book);
-  p.textContent = book.name;
   div.appendChild(p);
   div.appendChild(deleteBtn);
   div.appendChild(updateBtn);
   deleteBtn.addEventListener('click', deleteBook(book));
+  updateBtn.addEventListener('click',updateStatus(book));
   return div;
 }
 
