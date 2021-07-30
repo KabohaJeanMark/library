@@ -38,6 +38,17 @@ function deleteBook(book) {
   console.log('The book has been deleted')
 }
 
+function updateStatus(book) {
+  console.log(book);
+  if (book.read== 'yes') {
+    book.read = 'no';
+  }
+  else {
+    book.read = 'yes';
+  }
+  console.log(book);
+}
+
 function createBookCard(book) {
   const div = document.createElement('div');
   div.classList.add('m-2','p-1')
