@@ -2,6 +2,10 @@ const myLibrary = [];
 
 const allBooks = document.getElementById('bookList');
 
+const addBookbtn = document.querySelector('#createBookBtn');
+
+addBookbtn.onclick = addBookToLibrary();
+
 function Book(name, author, pages, read) {
   this.name = name;
   this.author = author;
@@ -21,7 +25,7 @@ function addBookToLibrary() {
     read = document.getElementById('notRead').value;
   }
   addedBook = new Book(name, author, pages, read);
-  myLibrary.push(addedbook);
+  myLibrary.push(addedBook);
 }
 
 function createBookCard(book) {

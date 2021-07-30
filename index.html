@@ -18,7 +18,7 @@
   
   <main>
     <div class="container">
-      <form>
+      <form autocomplete="off">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" aria-describedby="book name" placeholder="Enter name">
@@ -39,10 +39,11 @@
           <input type="radio" id="notRead" name="read" class="custom-control-input">
           <label class="custom-control-label" for="notRead">Not yet read</label>
         </div>
-        <button class="btn btn-success" type="submit">CREATE BOOK</button>
+        <button class="btn btn-success" type="submit" id="createBookBtn">CREATE BOOK</button>
       </form>
     </div>
 
+    <button class="btn btn-primary" id="allBooks">SHOW ALL BOOKS</button>
     <div id="bookList">
 
     </div>
