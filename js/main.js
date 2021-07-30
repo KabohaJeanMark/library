@@ -40,14 +40,19 @@ function deleteBook(book) {
 
 function createBookCard(book) {
   const div = document.createElement('div');
+  div.classList.add('m-2','p-1')
   const p = document.createElement('p');
   const deleteBtn = document.createElement('button');
-  deleteBtn.classList.add('btn','btn-danger'); 
+  const updateBtn = document.createElement('button');
+  deleteBtn.classList.add('btn','btn-danger','m-1'); 
   deleteBtn.textContent = 'DELETE';
+  updateBtn.classList.add('btn','btn-warning','m-1');
+  updateBtn.textContent = 'UPDATE';
   console.log(book);
   p.textContent = book.name;
   div.appendChild(p);
   div.appendChild(deleteBtn);
+  div.appendChild(updateBtn);
   deleteBtn.addEventListener('click', deleteBook(book));
   return div;
 }
