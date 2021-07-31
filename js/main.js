@@ -9,25 +9,6 @@ function Book(name, author, pages, read) {
   this.read = read;
 }
 
-function addBookToLibrary() {
-  const name = document.getElementById('name').value;
-  const author = document.getElementById('author').value;
-  const pages = document.getElementById('pages').value;
-  let read;
-  const rbs = document.querySelectorAll('input[name="read"]');
-  for (const rb of rbs) {
-    if (rb.checked) {
-      read = rb.value;
-      break;
-    }
-  }
-  const addedBook = new Book(name, author, pages, read);
-  myLibrary.push(addedBook);
-  console.log(myLibrary);
-  allBooks.textContent = '';
-  displayAllBooks();
-}
-
 function createBookCard(book) {
   const div = document.createElement('div');
   div.classList.add('m-2', 'p-1');
@@ -45,6 +26,7 @@ function createBookCard(book) {
   div.appendChild(readP);
   div.appendChild(deleteBtn);
   div.appendChild(updateBtn);
+
   updateBtn.addEventListener('click', () => {
     updateStatus(book);
   });
@@ -61,17 +43,16 @@ function displayAllBooks() {
     p2.textContent = 'There are currently no books';
     allBooks.appendChild(p2);
   } else {
-    for (const book of myLibrary) {
+    myLibrary.forEach((book) => {
       const bookCard = createBookCard(book);
       allBooks.appendChild(bookCard);
       allBooks.style.display = 'block';
-    }
+    });
   }
 }
 
 function deleteBook(book) {
   const bookIndex = myLibrary.indexOf(book);
-  // delete myLibrary[bookIndex];
   myLibrary.splice(bookIndex, 1);
   console.log('The book has been deleted');
   allBooks.textContent = '';
@@ -89,6 +70,24 @@ function updateStatus(book) {
   displayAllBooks();
   console.log('The book has been updated');
   console.log(book);
+}
+
+function addBookToLibrary() {
+  const name = document.getElementById('name').value;
+  const author = document.getElementById('author').value;
+  const pages = document.getElementById('pages').value;
+  let read;
+  const rbs = document.querySelectorAll('input[name="read"]');
+  rbs.forEach((rb) => {
+    if (rb.checked) {
+      read = rb.value;
+    }
+  });
+  const addedBook = new Book(name, author, pages, read);
+  myLibrary.push(addedBook);
+  console.log(myLibrary);
+  allBooks.textContent = '';
+  displayAllBooks();
 }
 
 const addForm = document.getElementById('createForm');
