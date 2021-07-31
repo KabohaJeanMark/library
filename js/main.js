@@ -9,6 +9,20 @@ function Book(name, author, pages, read) {
   this.read = read;
 }
 
+function displayAllBooks(createBookCard) {
+  if (!myLibrary.length) {
+    const p2 = document.createElement('p');
+    p2.textContent = 'There are currently no books';
+    allBooks.appendChild(p2);
+  } else {
+    myLibrary.forEach((book) => {
+      const bookCard = createBookCard(book);
+      allBooks.appendChild(bookCard);
+      allBooks.style.display = 'block';
+    });
+  }
+}
+
 function createBookCard(book) {
   const div = document.createElement('div');
   div.classList.add('m-2', 'p-1');
@@ -27,49 +41,29 @@ function createBookCard(book) {
   div.appendChild(deleteBtn);
   div.appendChild(updateBtn);
 
+  function deleteBook(book, displayAllBooks) {
+    const bookIndex = myLibrary.indexOf(book);
+    myLibrary.splice(bookIndex, 1);
+    allBooks.textContent = '';
+    displayAllBooks(createBookCard);
+  }
+  function updateStatus(book, displayAllBooks) {
+    if (book.read === 'yes') {
+      book.read = 'no';
+    } else {
+      book.read = 'yes';
+    }
+    allBooks.textContent = '';
+    displayAllBooks(createBookCard);
+  }
+
   updateBtn.addEventListener('click', () => {
-    updateStatus(book);
+    updateStatus(book, displayAllBooks);
   });
   deleteBtn.addEventListener('click', () => {
-    deleteBook(book);
+    deleteBook(book, displayAllBooks);
   });
   return div;
-}
-
-function displayAllBooks() {
-  if (!myLibrary.length) {
-    console.log('There are no books in library');
-    const p2 = document.createElement('p');
-    p2.textContent = 'There are currently no books';
-    allBooks.appendChild(p2);
-  } else {
-    myLibrary.forEach((book) => {
-      const bookCard = createBookCard(book);
-      allBooks.appendChild(bookCard);
-      allBooks.style.display = 'block';
-    });
-  }
-}
-
-function deleteBook(book) {
-  const bookIndex = myLibrary.indexOf(book);
-  myLibrary.splice(bookIndex, 1);
-  console.log('The book has been deleted');
-  allBooks.textContent = '';
-  displayAllBooks();
-}
-
-function updateStatus(book) {
-  console.log(book);
-  if (book.read === 'yes') {
-    book.read = 'no';
-  } else {
-    book.read = 'yes';
-  }
-  allBooks.textContent = '';
-  displayAllBooks();
-  console.log('The book has been updated');
-  console.log(book);
 }
 
 function addBookToLibrary() {
@@ -85,9 +79,8 @@ function addBookToLibrary() {
   });
   const addedBook = new Book(name, author, pages, read);
   myLibrary.push(addedBook);
-  console.log(myLibrary);
   allBooks.textContent = '';
-  displayAllBooks();
+  displayAllBooks(createBookCard);
 }
 
 const addForm = document.getElementById('createForm');

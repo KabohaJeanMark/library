@@ -9,7 +9,7 @@ It has the one main basic landing page. When all books is clicked, it shows all 
 ## Main Page
 
 ### Home Landing
-| ![screenshot](CRUD.png)
+| ![screenshot](assets/CRUD.png)
 
 ## Built With
 
@@ -33,7 +33,7 @@ Clone this [GitHub Repo](https://github.com/KabohaJeanMark/library/tree/ft-libra
 ```
 $ mkdir yourFolder
 $ cd yourFolder
-$ git clone https://github.com/KabohaJeanMark/jersey-directory/
+$ git clone https://github.com/KabohaJeanMark/library/
 ```
 
 ### Usage
