@@ -1,11 +1,4 @@
-const myLibrary = [
-  {
-    name: 'Harry Porter',
-    author: 'J.K Rowling',
-    pages: '200',
-    read: 'yes',
-  },
-];
+const myLibrary = [];
 
 const allBooks = document.getElementById('bookList');
 
@@ -38,15 +31,18 @@ function addBookToLibrary() {
 function createBookCard(book) {
   const div = document.createElement('div');
   div.classList.add('m-2', 'p-1');
-  const p = document.createElement('p');
-  p.textContent = book.name;
+  const heading4 = document.createElement('h4');
+  heading4.textContent = book.name;
+  const readP = document.createElement('p');
+  readP.textContent = `Read? ${book.read}`;
   const deleteBtn = document.createElement('button');
   deleteBtn.classList.add('btn', 'btn-danger', 'm-1');
   deleteBtn.textContent = 'DELETE';
   const updateBtn = document.createElement('button');
   updateBtn.classList.add('btn', 'btn-warning', 'm-1');
   updateBtn.textContent = 'UPDATE';
-  div.appendChild(p);
+  div.appendChild(heading4);
+  div.appendChild(readP);
   div.appendChild(deleteBtn);
   div.appendChild(updateBtn);
   updateBtn.addEventListener('click', () => {
@@ -75,8 +71,10 @@ function displayAllBooks() {
 
 function deleteBook(book) {
   const bookIndex = myLibrary.indexOf(book);
-  delete myLibrary[bookIndex];
-  console.log('The book has been deleted by default if I havent pressed the button yet');
+  // delete myLibrary[bookIndex];
+  myLibrary.splice(bookIndex, 1);
+  console.log('The book has been deleted');
+  allBooks.textContent = '';
   displayAllBooks();
 }
 
@@ -87,7 +85,9 @@ function updateStatus(book) {
   } else {
     book.read = 'yes';
   }
-  console.log('The book has been updated by default if I havent pressed the button yet');
+  allBooks.textContent = '';
+  displayAllBooks();
+  console.log('The book has been updated');
   console.log(book);
 }
 
