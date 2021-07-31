@@ -1,10 +1,10 @@
 const myLibrary = [
-  {
-    name: 'Harry Porter',
-    author: 'J.K Rowling',
-    pages: '200',
-    read: 'yes'
-  }
+  // {
+  //   name: 'Harry Porter',
+  //   author: 'J.K Rowling',
+  //   pages: '200',
+  //   read: 'yes'
+  // }
 ];
 
 const allBooks = document.getElementById('bookList');
@@ -71,11 +71,9 @@ function createBookCard(book) {
 function displayAllBooks() {
   if (!myLibrary.length) {
     console.log('There are no books in library')
-    const div2 = document.createElement('div');
     const p2 = document.createElement('p');
     p2.textContent = 'There are currently no books';
-    div2.appendChild(p2);
-    return div2;
+    allBooks.appendChild(p2);
   }
   else {
     for (const book of myLibrary) {
