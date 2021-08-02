@@ -2,12 +2,16 @@ const myLibrary = [];
 
 const allBooks = document.getElementById('bookList');
 
-function Book(name, author, pages, read) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
+// function Book(name, author, pages, read) {
+//   this.name = name;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
+
+const book = (name, author, pages, read) => {
+  return {name, author, pages, read};
+};
 
 function displayAllBooks(createBookCard) {
   if (!myLibrary.length) {
@@ -77,7 +81,7 @@ function addBookToLibrary() {
       read = rb.value;
     }
   });
-  const addedBook = new Book(name, author, pages, read);
+  // const addedBook = new Book(name, author, pages, read);
   myLibrary.push(addedBook);
   allBooks.textContent = '';
   displayAllBooks(createBookCard);
