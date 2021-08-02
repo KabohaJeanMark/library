@@ -8,10 +8,10 @@ const allBooks = document.getElementById('bookList');
 
 class Book {
   constructor(name, author, pages, read) {
-    this.name = name,
-    this.author = author,
-    this.pages = pages,
-    this.read = read
+    this.name = name;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
 }
 
@@ -83,7 +83,8 @@ function addBookToLibrary() {
       read = rb.value;
     }
   });
-  const addedBook = book(name, author, pages, read);
+  // const addedBook = book(name, author, pages, read);
+  const addedBook = new Book(name, author, pages, read);
   myLibrary.push(addedBook);
   allBooks.textContent = '';
   displayAllBooks(createBookCard);
