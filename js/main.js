@@ -2,15 +2,10 @@ const myLibrary = [];
 
 const allBooks = document.getElementById('bookList');
 
-// function Book(name, author, pages, read) { // old way using the constructor method
-//   this.name = name;
-//   this.author = author;
-//   this.pages = pages;
-//   this.read = read;
-// }
-
-const book = (name, author, pages, read) => { // new way using function factory design pattern
-  return {name, author, pages, read};
+const book = (name, author, pages, read) => {
+  return {
+    name, author, pages, read
+  };
 };
 
 function displayAllBooks(createBookCard) {
@@ -81,7 +76,6 @@ function addBookToLibrary() {
       read = rb.value;
     }
   });
-  // const addedBook = new Book(name, author, pages, read); // intentionally commented code. old way of calling based on Book constructor declared on line 5
   const addedBook = book(name, author, pages, read);
   myLibrary.push(addedBook);
   allBooks.textContent = '';
