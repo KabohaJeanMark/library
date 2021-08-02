@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Library</title>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Library</h1>  
+    </header>
+  </div>
+  
+  <main>
+    <div class="container">
+      <form autocomplete="off" class="m-2" id="createForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" aria-describedby="book name" placeholder="Enter name" required>
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" id="author" aria-describedby="book author" placeholder="Enter author" required>
+        </div>
+        <div class="form-group">
+          <label for="pages">Pages</label>
+          <input type="number" class="form-control" id="pages" aria-describedby="book pages" placeholder="Enter pages" required>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="alreadyRead" name="read" value="yes" class="custom-control-input">
+          <label class="custom-control-label" for="alreadyRead">Already read</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="notRead" name="read" value="no" class="custom-control-input">
+          <label class="custom-control-label" for="notRead">Not yet read</label>
+        </div>
+        <button class="btn btn-success" type="submit" id="createBookBtn">CREATE BOOK</button>
+      </form>
+    
+    <button class="btn btn-primary" id="allBooks">SHOW ALL BOOKS</button>
+    <div id="bookList">
+
+    </div>
+  </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
