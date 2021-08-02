@@ -2,11 +2,9 @@ const myLibrary = [];
 
 const allBooks = document.getElementById('bookList');
 
-const book = (name, author, pages, read) => {
-  return {
-    name, author, pages, read
-  };
-};
+const book = (name, author, pages, read) => ({
+  name, author, pages, read,
+});
 
 function displayAllBooks(createBookCard) {
   if (!myLibrary.length) {
